@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
  * Add your docs here.
@@ -22,6 +23,8 @@ public class DriveSubsystem extends Subsystem {
     WPI_TalonSRX rightFrontWheel = new WPI_TalonSRX(1);
     WPI_TalonSRX leftRearWheel = new WPI_TalonSRX(2);
     WPI_TalonSRX rightRearWheel = new WPI_TalonSRX(3);
+
+   DifferentialDrive roboDrive = new DifferentialDrive(leftFrontWheel, rightFrontWheel);
 
     public DriveSubsystem(){
 

@@ -38,6 +38,7 @@ public class RobotContainer {
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
+    drive.setDefaultCommand(new TankDrive());
     // Configure the button bindings
     configureButtonBindings();
   }
@@ -50,11 +51,11 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
 
-    new JoystickButton(xbox, Button.kB.value).whenPressed(() -> tail.switchState(), tail);
+    new JoystickButton(xbox, Button.kB.value).whenPressed(() -> tail.switchState());
 
-    new JoystickButton(xbox, Button.kBumperRight.value).whenPressed(() -> neck.switchState(), neck);
+    new JoystickButton(xbox, Button.kBumperRight.value).whenPressed(() -> neck.switchState());
 
-    new JoystickButton(xbox, Button.kBumperLeft.value).whenPressed(() -> beak.switchState(), beak);
+    new JoystickButton(xbox, Button.kBumperLeft.value).whenPressed(() -> beak.switchState());
   }
 
 

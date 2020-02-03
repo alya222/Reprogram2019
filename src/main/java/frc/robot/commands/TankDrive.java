@@ -47,4 +47,8 @@ public class TankDrive extends Command {
   @Override
   protected void interrupted() {
   }
+
+public Object getDifferentialDrive() {
+	return null;
+}
 }
