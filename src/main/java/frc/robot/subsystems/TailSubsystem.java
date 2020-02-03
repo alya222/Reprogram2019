@@ -9,47 +9,47 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.command.Subsystem;
+
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 /**
  * Add your docs here.
  */
-public class TailSubsystem extends Subsystem {
+public class TailSubsystem extends SubsystemBase {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-
   Compressor Airow = new Compressor(21);
-  Solenoid TailPusher = new Solenoid(21, 2);
+
+  Solenoid TailPusher = new Solenoid(21 , 1);
+
   boolean tailOut = false;
+
+  public TailSubsystem() {
+
+  }
+
+  public void out() {
+   TailPusher.set(true);
+   tailOut = true;
+  }
+
+  public void in() {
+   TailPusher.set(false);
+   tailOut = false;
+  }
   
-public TailSubsystem(){
-
-}
-
-public void out(){
-
-  TailPusher.set(true);
-  tailOut = true;
-}
-
-public void in(){
-
-  TailPusher.set(false);
-  tailOut = false;
-}
-
-public void switchState() {
-  if (tailOut = false) {
+  public void switchState() {
+   if (tailOut = false) {
     this.in();
-  }
-  else {
+   }
+   else {
     this.out();
+   }
+
   }
-}
 
   @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+  public void periodic() {
+    // This method will be called once per scheduler run
   }
 }

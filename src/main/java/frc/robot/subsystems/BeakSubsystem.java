@@ -9,47 +9,47 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.command.Subsystem;
+
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 /**
  * Add your docs here.
  */
-public class BeakSubsystem extends Subsystem {
+public class BeakSubsystem extends SubsystemBase {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-
   Compressor Airow = new Compressor(21);
-  Solenoid BeakPusher = new Solenoid(21, 2);
+
+  Solenoid BeakPusher = new Solenoid(21 , 2);
+
   boolean beakOut = false;
-  
-public BeakSubsystem(){
 
-}
+  public BeakSubsystem() {
 
-public void out(){
-
-  BeakPusher.set(true);
-  beakOut = true;
-}
-
-public void in(){
-
-  BeakPusher.set(false);
-  beakOut = false;
-}
-
-public void switchState() {
-  if (beakOut = false) {
-    this.in();
   }
-else {
-  this.out();
-}
-}
+
+  public void out() {
+   BeakPusher.set(true);
+   beakOut = true;
+  }
+
+  public void in() {
+   BeakPusher.set(false);
+   beakOut = false;
+  }
+  
+  public void switchState() {
+   if (beakOut = false) {
+    this.in();
+   }
+   else {
+    this.out();
+   }
+
+  }
 
   @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+  public void periodic() {
+    // This method will be called once per scheduler run
   }
 }

@@ -5,36 +5,36 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.vision;
+package frc.robot.vision;
 
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 import frc.robot.subsystems.DriveSubsystem;
 
+
 public class FollowTarget extends CommandBase {
   private Limelight limelight = new Limelight();
   private DriveSubsystem drive = new DriveSubsystem();
 
+  
   private PIDController distanceCorrector 
     = new PIDController(0.1, 0, 0);
 
   private PIDController angleCorrector 
     = new PIDController(0.1, 0, 0);
-
-    
+  
   /**
    * Creates a new FollowTarget.
    */
   public FollowTarget() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(limelight);
-    addRequirements(drive);
+    addRequirements(limelight, drive);
 
     distanceCorrector.setSetpoint(5.0);
     angleCorrector.setSetpoint(0);
   }
-  
+
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
@@ -59,4 +59,3 @@ public class FollowTarget extends CommandBase {
     return false;
   }
 }
-

@@ -6,49 +6,37 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class TankDrive extends Command {
+public class TankDrive extends CommandBase {
+  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
 
   XboxController xbox = new XboxController(0);
-
   public TankDrive() {
     // Use requires() here to declare subsystem dependencies
-   requires(Robot.drive);
+    addRequirements(Robot.drive);
+  }
+  // Called when the command is initially scheduled.
+  @Override
+  public void initialize() {
   }
 
-  // Called just before this Command runs the first time
+  // Called every time the scheduler runs while the command is scheduled.
   @Override
-  protected void initialize() {
-  }
-
-  // Called repeatedly when this Command is scheduled to run
-  @Override
-  protected void execute() {
+  public void execute() {
     Robot.drive.TankDrive(xbox.getRawAxis(5), xbox.getRawAxis(1));
   }
 
-  // Make this return true when this Command no longer needs to run execute()
+  // Called once the command ends or is interrupted.
   @Override
-  protected boolean isFinished() {
+  public void end(boolean interrupted) {
+  }
+
+  // Returns true when the command should end.
+  @Override
+  public boolean isFinished() {
     return false;
   }
-
-  // Called once after isFinished returns true
-  @Override
-  protected void end() {
-  }
-
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
-  @Override
-  protected void interrupted() {
-  }
-
-public Object getDifferentialDrive() {
-	return null;
-}
 }
